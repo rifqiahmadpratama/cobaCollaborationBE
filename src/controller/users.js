@@ -10,19 +10,13 @@ const UserController = {
   registerAccount: async (req, res) => {
     try {
       const { email, password, name, phone } = req.body;
-      // const checkEmail = await usersModel.findEmail(email);
-      // const checkUsername = await usersModel.findUsername(username);
+      const checkEmail = await usersModel.findEmail(email);
 
-      // try {
-      //   if (checkEmail.rowCount == 1 && checkUsername.rowCount == 0)
-      //     throw "Email is already used";
-      //   if (checkEmail.rowCount == 0 && checkUsername.rowCount == 1)
-      //     throw "Username is already used";
-      //   if (checkEmail.rowCount == 1 && checkUsername.rowCount == 1)
-      //     throw "Email and Username is already used";
-      // } catch (error) {
-      //   return commonHelper.response(res, null, 403, error);
-      // }
+      try {
+        if (checkEmail.rowCount == 1) throw "Email is already used";
+      } catch (error) {
+        return commonHelper.response(res, null, 403, error);
+      }
 
       const saltRounds = 10;
       const passwordHash = bcrypt.hashSync(password, saltRounds);
@@ -90,6 +84,7 @@ const UserController = {
       } else if (typeof queryUpdate === "string" && typeof queryDelete === "undefined") {
         console.log(req.file);
         if (req.file) {
+
           const PORT = process.env.PORT;
           const DB_HOST = process.env.DB_HOST;
           const filepicture = req.file.filename;
@@ -102,7 +97,9 @@ const UserController = {
           await usersModel.updateAccount(email, name, genderLowerCase, phone, date_of_birth, picture, role);
 
           commonHelper.response(res, null, 201, "Profile has been updated");
+
         } else {
+
           const { name, gender, phone, date_of_birth, role } = req.body;
 
           const genderLowerCase = gender.toLowerCase();

@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "name": "WorldRecipesAPI",
+    "builds": [
+       { "src": "app.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+       { "src": "/(.*)", "dest": "/index.js" }
+    ]
+ }

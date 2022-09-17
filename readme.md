@@ -1,5 +1,4 @@
-Shopers E-Commerce  
-built with BurnBrain
+World Recipes
 
 ## Requirements Node.js
 
