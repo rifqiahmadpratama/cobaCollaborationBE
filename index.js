@@ -20,7 +20,7 @@ app.use(xss());
 
 app.use("/api/v1", mainRouter);
 
-app.use("/tmp/upload", express.static("./tmp/upload"));
+app.use("/tmp", express.static("./tmp"));
 
 app.all("*", (req, res, next) => {
   next(createError());
