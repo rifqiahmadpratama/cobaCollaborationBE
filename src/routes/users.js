@@ -30,6 +30,7 @@ router
       }
       const auth = authenticateGoogle();
       const response = await uploadToGoogleDrive(req.file, auth);
+      console.log(response)
       deleteFile(req.file.path);
       res.status(200).json({ response });
     } catch (err) {

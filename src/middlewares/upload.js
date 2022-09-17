@@ -3,7 +3,7 @@ const createError = require('http-errors')
 
 const fileStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, `${__dirname}`)
+    cb(null, './tmp/upload')
   },
   filename: function (req, file, cb) {
     cb(null, new Date().getTime() + '-' + file.originalname)
@@ -24,9 +24,9 @@ const fileFiltered = (req, file, cb) => {
 
 const upload = multer({
   storage: fileStorage,
-  // limits: {
-  //   fieldSize: 2 * 1024 * 1024 // 2 MB (max file size)
-  // },
+  limits: {
+    fieldSize: 2 * 1024 * 1024 // 2 MB (max file size)
+  },
   fileFilter: fileFiltered
 })
 
