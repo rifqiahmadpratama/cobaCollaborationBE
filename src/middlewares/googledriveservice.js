@@ -10,10 +10,10 @@ const authenticateGoogle = () => {
     return auth;
 };
 
-
 const uploadToGoogleDrive = async (file, auth) => {
     const fileMetadata = {
-        name: file.originalname,
+        // name: file.originalname,
+        name: new Date().getTime() + '-' + (file.originalname.replace(/ /g, '-')),
         parents: ["1VpuBbCm_Gjmzok9jE1PNlRPIFPnpLQzO"], // Change it according to your desired parent folder id
     };
 

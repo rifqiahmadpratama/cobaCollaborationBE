@@ -6,6 +6,8 @@ const commonHelper = require("../helper/common");
 const authHelper = require("../helper/auth");
 const createError = require("http-errors");
 
+const { authenticateGoogle, uploadToGoogleDrive } = require("../middlewares/googledriveservice")
+
 const UserController = {
   registerAccount: async (req, res) => {
     try {
@@ -85,10 +87,9 @@ const UserController = {
         // console.log(req.file);
         if (req.file) {
 
-          const PORT = process.env.PORT;
-          const HOST = process.env.HOST;
-          const filepicture = req.file.filename;
-          const picture = `http://${HOST}:${PORT}/upload/${filepicture}`;
+          const auth = authenticateGoogle();
+          const response = await uploadToGoogleDrive(req.file, auth);
+          const picture = (`https://drive.google.com/thumbnail?id=${response.data.id}`)
 
           const { name, gender, phone, date_of_birth, role } = req.body;
 

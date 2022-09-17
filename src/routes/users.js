@@ -9,7 +9,7 @@ const upload = require("../middlewares/upload");
 //     validateChangeEmail,
 //     validateChangePassword } = require('../middlewares/common')
 
-const { authenticateGoogle, uploadToGoogleDrive, deleteFile } = require("../middlewares/googledriveservice")
+const { authenticateGoogle, uploadToGoogleDrive } = require("../middlewares/googledriveservice")
 
 router
   .post("/register", ControllerUsers.registerAccount)
@@ -30,9 +30,11 @@ router
       }
       const auth = authenticateGoogle();
       const response = await uploadToGoogleDrive(req.file, auth);
-      console.log(response)
-      deleteFile(req.file.path);
-      res.status(200).json({ response });
+      const picture = (`https://drive.google.com/thumbnail?id=${response.data.id}`)
+
+      console.log(picture)
+
+      res.status(200).json(response.data.id);
     } catch (err) {
       console.log(err);
     }
