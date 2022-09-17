@@ -20,7 +20,7 @@ app.use(xss());
 
 app.use("/api/v1", mainRouter);
 
-app.use("/upload", express.static("./upload"));
+app.use("/tmp", express.static("./tmp"));
 
 app.all("*", (req, res, next) => {
   next(createError());
@@ -34,8 +34,7 @@ app.use((err, req, res, next) => {
   next();
 });
 
-const host = process.env.DB_HOST;
 const port = process.env.PORT;
 app.listen(port, () => {
-  console.log(`server running on http://${host}:${port}`);
+  console.log(`server running on :${port}`);
 });
