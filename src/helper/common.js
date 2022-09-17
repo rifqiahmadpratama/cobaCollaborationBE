@@ -21,14 +21,14 @@ const response = (res, result, status, message, pagination) => {
 
 
     try {
-        if (message === null) throw "message kosong";
+        if (message === undefined || null) throw "message kosong";
         resultPrint.message = message
     } catch (error) {
         console.log(error)
     }
 
     try {
-        if (pagination === undefined) throw "pagination kosong";
+        if (pagination === undefined || null) throw "pagination kosong";
         resultPrint.pagination = pagination || {}
     } catch (error) {
         console.log(error)

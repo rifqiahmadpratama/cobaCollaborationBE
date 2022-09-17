@@ -50,7 +50,7 @@ const UserController = {
         return commonHelper.response(res, null, 403, "Email is invalid");
       }
       const isValidPassword = bcrypt.compareSync(password, user.password);
-      console.log(isValidPassword);
+      // console.log(isValidPassword);
 
       if (!isValidPassword) {
         return commonHelper.response(res, null, 403, "Password is invalid");
@@ -82,19 +82,17 @@ const UserController = {
       if (typeof queryUpdate === "undefined" && typeof queryDelete === "undefined") {
         commonHelper.response(res, user, 200);
       } else if (typeof queryUpdate === "string" && typeof queryDelete === "undefined") {
-        console.log(req.file);
+        // console.log(req.file);
         if (req.file) {
 
           const PORT = process.env.PORT;
-          const DB_HOST = process.env.DB_HOST;
+          const HOST = process.env.HOST;
           const filepicture = req.file.filename;
-          const picture = `http://${DB_HOST}:${PORT}/upload/${filepicture}`;
+          const picture = `http://${HOST}:${PORT}/upload/${filepicture}`;
 
           const { name, gender, phone, date_of_birth, role } = req.body;
 
-          const genderLowerCase = gender.toLowerCase();
-
-          await usersModel.updateAccount(email, name, genderLowerCase, phone, date_of_birth, picture, role);
+          await usersModel.updateAccount(email, name, gender, phone, date_of_birth, picture, role);
 
           commonHelper.response(res, null, 201, "Profile has been updated");
 
@@ -102,9 +100,7 @@ const UserController = {
 
           const { name, gender, phone, date_of_birth, role } = req.body;
 
-          const genderLowerCase = gender.toLowerCase();
-
-          await usersModel.updateNoPict(email, name, genderLowerCase, phone, date_of_birth, role);
+          await usersModel.updateNoPict(email, name, gender, phone, date_of_birth, role);
 
           commonHelper.response(res, null, 201, "Profile has been updated");
         }
@@ -121,8 +117,8 @@ const UserController = {
     try {
       const email = req.payload.email;
       const emailBody = req.body.email;
-      console.log(email + emailBody);
-      console.log(req.body.email);
+      // console.log(email + emailBody);
+      // console.log(req.body.email);
       await usersModel.changeEmailAccount(email, emailBody);
       commonHelper.response(res, null, 201, "Email Account has been update, Please Login again");
     } catch (error) {
