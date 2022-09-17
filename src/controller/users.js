@@ -89,7 +89,7 @@ const UserController = {
 
           const auth = authenticateGoogle();
           const response = await uploadToGoogleDrive(req.file, auth);
-          const picture = (`https://drive.google.com/thumbnail?id=${response.data.id}`)
+          const picture = (`https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`)
 
           const { name, gender, phone, date_of_birth, role } = req.body;
 
