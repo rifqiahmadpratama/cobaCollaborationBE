@@ -1,12 +1,13 @@
 const multer = require('multer')
 const createError = require('http-errors')
 
+
 const fileStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, `./tmp/`)
-  },
+  // destination: function (req, file, cb) {
+  //   cb(null, `./tmp/`)
+  // },
   filename: function (req, file, cb) {
-    cb(null, new Date().getTime() + '-' + file.originalname)
+    cb(null, new Date().getTime() + '-' + (file.originalname.replace(/ /g, '-')))
   }
 })
 
