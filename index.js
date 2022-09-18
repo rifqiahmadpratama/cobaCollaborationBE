@@ -26,6 +26,8 @@ app.all("*", (req, res, next) => {
   next(createError());
 });
 
+// console.log()
+
 app.use((err, req, res, next) => {
   const statusCode = err.status;
   if (res.status(statusCode)) {
