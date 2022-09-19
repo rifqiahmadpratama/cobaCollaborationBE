@@ -125,7 +125,7 @@ const recipesController = {
 
         const auth = authenticateGoogle();
         const response = await uploadToGoogleDrive(req.file, auth);
-        const photo_id = (`https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`)
+        const photo_id = (`https://lh3.google.com/u/0/d/${response.data.id}s1080`)
 
         const { name, description, category_id, users_id } = req.body;
 
