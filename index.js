@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors");
+// const cors = require("cors");
 const createError = require("http-errors");
 const helmet = require("helmet");
 const xss = require("xss-clean");
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan("dev"));
-app.use(cors());
+// app.use(cors());
 app.use(helmet());
 app.use(xss());
 
