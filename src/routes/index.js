@@ -7,9 +7,10 @@ const recipesRouter = require("../routes/recipes");
 const savedRecipesRouter = require("../routes/savedrecipes");
 
 router
-    .use("/recipes", recipesRouter)
-    .use("/category", categoryRouter)
+
     .use("/users", usersRouter)
+    .use("/category", categoryRouter)
+    .use("/recipes", recipesRouter)
     .use("/savedrecipes", savedRecipesRouter);
 
 module.exports = router;

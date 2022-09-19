@@ -2,8 +2,8 @@ const Pool = require("../config/db");
 const selectAll = () => {
   return Pool.query(`select * from category`);
 };
-const selectPagination = ({ querysearch }) => {
-  return Pool.query(`SELECT * FROM category  ${querysearch}`);
+const selectPagination = ({ limit, offset, sortby, sort, querysearch }) => {
+  return Pool.query(`SELECT * FROM category ${querysearch} order by ${sortby} ${sort} limit ${limit} offset ${offset}`);
 };
 const selectCategoryId = (id) => {
   return Pool.query(`select * from category where id='${id}'`);

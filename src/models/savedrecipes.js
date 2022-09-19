@@ -36,6 +36,10 @@ const deleteSavedRecipes = (id) => {
     return Pool.query(`delete from savedrecipes where id='${id}'`)
 }
 
+const countData = () => {
+    return Pool.query("SELECT COUNT(*) FROM savedrecipes");
+};
+
 module.exports = {
     selectAll,
     selectPagination,
@@ -44,5 +48,6 @@ module.exports = {
     selectRecipes,
     insertSavedRecipes,
     updateSavedRecipes,
-    deleteSavedRecipes
+    deleteSavedRecipes,
+    countData
 }

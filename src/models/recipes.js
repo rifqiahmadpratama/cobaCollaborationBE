@@ -28,10 +28,10 @@ const updateRecipes = (
     name,
     description,
     category_id,
-    id_users
+    users_id
 
 ) => {
-    return Pool.query(`update recipes set photo_id = '${photo_id}' , name = '${name}' , description = '${description}' , category_id = '${category_id}' , id_users = '${id_users}' where id = '${id}' `)
+    return Pool.query(`update recipes set photo_id = '${photo_id}' , name = '${name}' , description = '${description}' , category_id = '${category_id}' , id_users = '${users_id}' where id = '${id}' `)
 }
 
 const updateRecipesNoPhoto = (
@@ -39,10 +39,10 @@ const updateRecipesNoPhoto = (
     name,
     description,
     category_id,
-    id_users
+    users_id
 
 ) => {
-    return Pool.query(`update recipes set name = '${name}' , description = '${description}' , category_id = '${category_id}' , id_users = '${id_users}' where id = '${id}' `)
+    return Pool.query(`update recipes set name = '${name}' , description = '${description}' , category_id = '${category_id}' , id_users = '${users_id}' where id = '${id}' `)
 }
 
 const deleteRecipes = (id) => {
@@ -53,11 +53,13 @@ const selectCategory = (category_idLowerCase) => {
     return Pool.query(`select * from category where id='${category_idLowerCase}'`)
 }
 
-const selectUsers = (id_users) => {
-    return Pool.query(`select * from users where id='${id_users}'`)
+const selectUsers = (users_id) => {
+    return Pool.query(`select * from users where users.id='${users_id}'`)
 }
 
-
+const countData = () => {
+    return Pool.query("SELECT COUNT(*) FROM recipes");
+};
 
 module.exports = {
     selectAll,
@@ -68,5 +70,6 @@ module.exports = {
     updateRecipesNoPhoto,
     deleteRecipes,
     selectCategory,
-    selectUsers
+    selectUsers,
+    countData
 }

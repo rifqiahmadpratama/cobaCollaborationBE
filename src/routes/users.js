@@ -9,7 +9,7 @@ const upload = require("../middlewares/upload");
 //     validateChangeEmail,
 //     validateChangePassword } = require('../middlewares/common')
 
-const { authenticateGoogle, uploadToGoogleDrive } = require("../middlewares/googledriveservice")
+// const { authenticateGoogle, uploadToGoogleDrive } = require("../middlewares/googledriveservice")
 
 router
   .post("/register", ControllerUsers.registerAccount)
@@ -22,24 +22,24 @@ router
   .delete("/profile", protect, ControllerUsers.profileAccount)
 
 
-  .post("/uploadfiledrive", upload.single("picture"), async (req, res) => {
-    try {
-      if (!req.file) {
-        res.status(400).send("No file uploaded.");
-        return;
-      }
-      const auth = authenticateGoogle();
-      const response = await uploadToGoogleDrive(req.file, auth);
-      const picture = (`https://drive.google.com/thumbnail?id=${response.data.id}`)
+// .post("/uploadfiledrive", upload.single("picture"), async (req, res) => {
+//   try {
+//     if (!req.file) {
+//       res.status(400).send("No file uploaded.");
+//       return;
+//     }
+//     const auth = authenticateGoogle();
+//     const response = await uploadToGoogleDrive(req.file, auth);
+//     const picture = (`https://drive.google.com/thumbnail?id=${response.data.id}`)
 
-      console.log(picture)
+//     console.log(picture)
 
-      res.status(200).json(response.data.id);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  );
+//     res.status(200).json(response.data.id);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+// );
 
 
 

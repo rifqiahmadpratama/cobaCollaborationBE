@@ -31,19 +31,10 @@ CREATE TRIGGER update_users_updated_on
 EXECUTE PROCEDURE update_updated_on_users();
 
 
-
-
-
-
-
-
-
 CREATE TABLE category (
 id TEXT NOT NULL PRIMARY KEY,
 name TEXT
 );
-
-
 
 
 CREATE TABLE recipes (

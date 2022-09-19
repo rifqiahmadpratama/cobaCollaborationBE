@@ -4,29 +4,31 @@ const commonHelper = require("../helper/common");
 const categoryController = {
   getPaginationCategory: async (req, res) => {
     try {
-      // const page = parseInt(req.query.page) || 1;
-      // const limit = parseInt(req.query.limit) || 10;
-      // const offset = (page - 1) * limit;
-
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = (page - 1) * limit;
       const search = req.query.search;
       let querysearch = "";
       if (search === undefined) {
         querysearch = ``;
       } else {
-        querysearch = ` where name Ilike '%${search}%' `;
+        querysearch = `where category.name Ilike '%${search}%'`;
       }
-      // const sortby = req.query.sortby || "created_on";
-      // const sort = req.query.sort || "asc";
-      const result = await categoryModel.selectPagination({ querysearch });
-      // const totalData = parseInt((await categoryModel.selectAll()).rowCount);
-      // const totalPage = Math.ceil(totalData / limit);
-      // const pagination = {
-      //   // currentPage: page,
-      //   limit: limit,
-      //   totalData: totalData,
-      //   totalPage: totalPage,
-      // };
-      commonHelper.response(res, result.rows, 200, null, null);
+      const sortby = req.query.sortby || "id";
+      const sort = req.query.sort || "asc";
+      const result = await categoryModel.selectPagination({ limit, offset, sortby, sort, querysearch });
+
+      const { rows: [data] } = await categoryModel.countData()
+
+      const totalData = parseInt(data.count);
+      const totalPage = Math.ceil(totalData / limit);
+      const pagination = {
+        currentPage: page,
+        limit: limit,
+        totalData: totalData,
+        totalPage: totalPage,
+      };
+      commonHelper.response(res, result.rows, 200, null, pagination);
     } catch (error) {
       res.send(createError(404));
     }
