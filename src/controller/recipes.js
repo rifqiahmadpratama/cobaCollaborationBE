@@ -4,7 +4,7 @@ const createError = require("http-errors");
 const commonHelper = require("../helper/common");
 // const client = require('../config/redis')
 
-const { authenticateGoogle, uploadToGoogleDrive } = require("../middlewares/googledriveservice")
+const { authenticateGoogle, uploadToGoogleDrive } = require("../middlewares/googledriveservice");
 
 const recipesController = {
   getPaginationRecipes: async (req, res) => {
@@ -29,7 +29,7 @@ const recipesController = {
         offset,
         sortby,
         sort,
-        querysearch
+        querysearch,
       });
 
       const totalData = parseInt((await recipesModel.selectAll()).rowCount);
@@ -45,7 +45,6 @@ const recipesController = {
 
       commonHelper.response(res, result.rows, 200, null, pagination);
       // console.log(result);
-
     } catch (error) {
       res.send(createError(404));
     }
@@ -57,7 +56,6 @@ const recipesController = {
       const checkRecipes = await recipesModel.selectRecipes(id);
       try {
         if (checkRecipes.rowCount == 0) throw "Recipe has not found";
-
       } catch (error) {
         return commonHelper.response(res, null, 404, error);
       }
@@ -75,35 +73,36 @@ const recipesController = {
     try {
       const id = uuidv4().toLocaleLowerCase();
 
-      const auth = authenticateGoogle();
-      const response = await uploadToGoogleDrive(req.file, auth);
-      const photo_id = (`https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`)
+      if (!req.file) {
+        return commonHelper.response(res, null, 404, "Photo has not found");
+      } else {
+        const auth = authenticateGoogle();
+        const response = await uploadToGoogleDrive(req.file, auth);
+        const photo_id = `https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`;
 
-      const { name, description, category_id, users_id } = req.body;
+        const { name, description, category_id, users_id } = req.body;
 
+        const checkCategory = await recipesModel.selectCategory(category_id);
 
-      const checkCategory = await recipesModel.selectCategory(category_id);
+        try {
+          if (checkCategory.rowCount == 0) throw "Category has not found";
+        } catch (error) {
+          return commonHelper.response(res, null, 404, error);
+        }
 
+        const checkUsers = await recipesModel.selectUsers(users_id);
 
-      try {
-        if (checkCategory.rowCount == 0) throw "Category has not found";
-      } catch (error) {
-        return commonHelper.response(res, null, 404, error);
+        // console.log(checkUsers)
+        try {
+          if (checkUsers.rowCount == 0) throw "Users has not found";
+        } catch (error) {
+          return commonHelper.response(res, null, 404, error);
+        }
+
+        await recipesModel.insertRecipes(id, photo_id, name, description, category_id, users_id);
+        commonHelper.response(res, null, 201, "New Recipes Created");
+        // console.log(id, photo_id, name, description, category_id, users_id);
       }
-
-      const checkUsers = await recipesModel.selectUsers(users_id);
-
-      console.log(checkUsers)
-      try {
-        if (checkUsers.rowCount == 0) throw "Users has not found";
-      } catch (error) {
-        return commonHelper.response(res, null, 404, error);
-      }
-
-      await recipesModel.insertRecipes(id, photo_id, name, description, category_id, users_id);
-      commonHelper.response(res, null, 201, "New Recipes Created");
-      console.log(id, photo_id, name, description, category_id, users_id);
-
     } catch (error) {
       res.send(createError(400));
     }
@@ -122,10 +121,9 @@ const recipesController = {
 
       // console.log(req.file);
       if (req.file) {
-
         const auth = authenticateGoogle();
         const response = await uploadToGoogleDrive(req.file, auth);
-        const photo_id = (`https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`)
+        const photo_id = `https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`;
 
         const { name, description, category_id, users_id } = req.body;
 
@@ -144,7 +142,6 @@ const recipesController = {
         } catch (error) {
           return commonHelper.response(res, null, 404, error);
         }
-
 
         await recipesModel.updateRecipes(id, photo_id, name, description, category_id, users_id);
         // console.log(id, photo_id, name, description, category_id, id_users);
@@ -171,7 +168,6 @@ const recipesController = {
           return commonHelper.response(res, null, 404, error);
         }
 
-
         await recipesModel.updateRecipesNoPhoto(id, name, description, category_id, users_id);
         // console.log(id, photo_id, name, description, category_id, id_users);
         // const result = await productModel.selectProduct(id)
@@ -179,8 +175,6 @@ const recipesController = {
 
         commonHelper.response(res, null, 201, "Recipes Update");
       }
-
-
     } catch (error) {
       res.send(createError(400));
     }
@@ -193,14 +187,12 @@ const recipesController = {
       const checkRecipes = await recipesModel.selectRecipes(id);
       try {
         if (checkRecipes.rowCount == 0) throw "Recipe has not found";
-
       } catch (error) {
         return commonHelper.response(res, null, 404, error);
       }
 
       await recipesModel.deleteRecipes(id);
       commonHelper.response(res, null, 200, "Recipes Deleted");
-
     } catch (error) {
       res.send(createError(404));
     }
@@ -228,6 +220,17 @@ const recipesController = {
         totalPage: totalPage,
       };
       commonHelper.response(res, result.rows, 200, null, pagination);
+    } catch (error) {
+      res.send(createError(404));
+    }
+  },
+
+  deleteRecipesSelected: async (req, res) => {
+    try {
+      const id = req.params.id;
+      // console.log(id)
+      await recipesModel.deleteRecipesSelected(id);
+      commonHelper.response(res, null, 200, "Product Deleted Selected Success");
     } catch (error) {
       res.send(createError(404));
     }
