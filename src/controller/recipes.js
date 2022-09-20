@@ -20,7 +20,7 @@ const recipesController = {
       if (search === undefined) {
         querysearch = ``;
       } else {
-        querysearch = ` where name  like '%${search.toLowerCase()}%' `;
+        querysearch = ` where name ilike '%${search.toLowerCase()}%' `;
       }
       const sortby = req.query.sortby || "created_on";
       const sort = req.query.sort || "asc";
