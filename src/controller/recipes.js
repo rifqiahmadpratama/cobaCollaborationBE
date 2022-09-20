@@ -205,6 +205,33 @@ const recipesController = {
       res.send(createError(404));
     }
   },
+
+  getPaginationRecipestByUser: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 24;
+      const offset = (page - 1) * limit;
+
+      const querysearch = ` where recipes.users_id = '${id}' `;
+      const sortby = req.query.sortby || "created_on";
+      const sort = req.query.sort || "desc";
+      const result = await recipesModel.selectPaginationUserRecipes({ limit, offset, sortby, sort, querysearch });
+      // console.log("test")
+      const totalData = parseInt((await recipesModel.selectAll()).rowCount);
+      // console.log(result);
+      const totalPage = Math.ceil(totalData / limit);
+      const pagination = {
+        currentPage: page,
+        limit: limit,
+        totalData: totalData,
+        totalPage: totalPage,
+      };
+      commonHelper.response(res, result.rows, 200, null, pagination);
+    } catch (error) {
+      res.send(createError(404));
+    }
+  },
 };
 
 module.exports = recipesController;
