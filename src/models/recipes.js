@@ -2,6 +2,10 @@ const Pool = require('../config/db')
 const selectAll = () => {
     return Pool.query(`select * from recipes`);
 }
+const selectAllSearch = (querysearch) => {
+    return Pool.query(`select * from recipes inner join users on users.id = recipes.users_id  inner join category on category.id = recipes.category_id  ${querysearch} `);
+}
+
 const selectPagination = ({ limit, offset, sortby, sort, querysearch }) => {
     return Pool.query(`select * from recipes ${querysearch} order by ${sortby} ${sort} limit ${limit} offset ${offset}`)
 }
@@ -70,8 +74,15 @@ const deleteRecipesSelected = (id) => {
     return Pool.query(`delete from recipes where id in (${id})`)
 }
 
+const selectPaginationCategory = ({ limit, offset, sortby, sort, querysearch }) => {
+    // return Pool.query(`select * from product ${querysearch}  order by ${sortby} ${sort} limit ${limit} offset ${offset} `)
+    // return Pool.query(`select recipes.id,  recipes.name, recipes.photo_id,  recipes.description, recipes.category_id,  recipes.users_id,  recipes.created_on, recipes.updated_on, users.name as users_name, category.name as category_name from recipes inner join users on users.id = recipes.users_id  inner join category on category.id = recipes.category_id  ${querysearch} order by recipes.${sortby} ${sort} limit ${limit} offset ${offset}`)
+    return Pool.query(`select recipes.id,  recipes.name, recipes.photo_id,  recipes.description, recipes.category_id,  recipes.users_id,  recipes.created_on, recipes.updated_on, users.name as users_name, category.name as category_name from recipes inner join users on users.id = recipes.users_id  inner join category on category.id = recipes.category_id  ${querysearch} order by recipes.${sortby} ${sort} limit ${limit} offset ${offset}`)
+}
+
 module.exports = {
     selectAll,
+    selectAllSearch,
     selectPagination,
     selectRecipes,
     insertRecipes,
@@ -82,5 +93,6 @@ module.exports = {
     selectUsers,
     countData,
     selectPaginationUserRecipes,
-    deleteRecipesSelected
+    deleteRecipesSelected,
+    selectPaginationCategory,
 }

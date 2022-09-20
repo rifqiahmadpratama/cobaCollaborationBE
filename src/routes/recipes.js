@@ -16,4 +16,7 @@ router.get('/usersrecipes/:id', recipesController.getPaginationRecipestByUser);
 
 router.delete('/selected/:id', protect, recipesController.deleteRecipesSelected);
 
+router.get('/category/:name', recipesController.getPaginationRecipesCategory);
+
+
 module.exports = router;

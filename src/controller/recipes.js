@@ -17,10 +17,15 @@ const recipesController = {
 
       const search = req.query.search;
       let querysearch = "";
-      if (search === undefined) {
+      let totalData = "";
+      // let result = "";
+
+      if (search === null || search === undefined) {
         querysearch = ``;
+        totalData = parseInt((await recipesModel.selectAll()).rowCount);
       } else {
-        querysearch = ` where name ilike '%${search.toLowerCase()}%' `;
+        querysearch = ` where resipes.name ilike '%${search.toLowerCase()}%' `;
+        totalData = parseInt((await recipesModel.selectAllSearch(querysearch)).rowCount);
       }
       const sortby = req.query.sortby || "created_on";
       const sort = req.query.sort || "asc";
@@ -32,7 +37,6 @@ const recipesController = {
         querysearch,
       });
 
-      const totalData = parseInt((await recipesModel.selectAll()).rowCount);
       // console.log(result);
       const totalPage = Math.ceil(totalData / limit);
       const pagination = {
@@ -231,6 +235,52 @@ const recipesController = {
       // console.log(id)
       await recipesModel.deleteRecipesSelected(id);
       commonHelper.response(res, null, 200, "Product Deleted Selected Success");
+    } catch (error) {
+      res.send(createError(404));
+    }
+  },
+
+  getPaginationRecipesCategory: async (req, res) => {
+    try {
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 24;
+      const offset = (page - 1) * limit;
+
+      // const search = req.query.search;
+      const search = req.params.name;
+      // const search = req.params.id
+      let querysearch = "";
+      // if (search === undefined) {
+      //   querysearch = ``;
+      // } else {
+      //   // querysearch = ` where name  like '%${search.toLowerCase()}%' `;
+      //   querysearch = ` where category.name ilike '%${search.toLowerCase()}%' `;
+      // }
+
+      let totalData = "";
+      // let result = "";
+
+      if (search === null || search === undefined) {
+        querysearch = ``;
+        totalData = parseInt((await recipesModel.selectAll()).rowCount);
+      } else {
+        querysearch = ` where category.name ilike '%${search}%' `;
+        totalData = parseInt((await recipesModel.selectAllSearch(querysearch)).rowCount);
+      }
+
+      // console.log(querysearch)
+      const sortby = req.query.sortby || "created_on";
+      const sort = req.query.sort || "desc";
+      const result = await recipesModel.selectPaginationCategory({ limit, offset, sortby, sort, querysearch });
+
+      const totalPage = Math.ceil(totalData / limit);
+      const pagination = {
+        currentPage: page,
+        limit: limit,
+        totalData: totalData,
+        totalPage: totalPage,
+      };
+      commonHelper.response(res, result.rows, 200, null, pagination);
     } catch (error) {
       res.send(createError(404));
     }
