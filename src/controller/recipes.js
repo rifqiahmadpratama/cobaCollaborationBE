@@ -24,7 +24,7 @@ const recipesController = {
         querysearch = ``;
         totalData = parseInt((await recipesModel.selectAll()).rowCount);
       } else {
-        querysearch = ` where resipes.name ilike '%${search.toLowerCase()}%' `;
+        querysearch = ` where recipes.name ilike '%${search.toLowerCase()}%' `;
         totalData = parseInt((await recipesModel.selectAllSearch(querysearch)).rowCount);
       }
       const sortby = req.query.sortby || "created_on";
