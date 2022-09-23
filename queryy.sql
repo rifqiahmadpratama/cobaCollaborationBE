@@ -78,9 +78,28 @@ EXECUTE PROCEDURE update_updated_on_recipes();
 
 CREATE TABLE savedrecipes (
 id TEXT NOT NULL PRIMARY KEY,  
-id_recipes TEXT,
+recipes_id TEXT,
 users_id TEXT,
-constraint recipes foreign key(id_recipes) references recipes(id),
+constraint recipes foreign key(recipes_id) references recipes(id),
+constraint users foreign key(users_id) references users(id)
+);
+
+
+
+CREATE TABLE likesrecipes (
+id TEXT NOT NULL PRIMARY KEY,  
+recipes_id TEXT,
+users_id TEXT,
+constraint recipes foreign key(recipes_id) references recipes(id),
+constraint users foreign key(users_id) references users(id)
+);
+
+
+CREATE TABLE commentrecipes (
+id TEXT NOT NULL PRIMARY KEY,  
+recipes_id TEXT,
+users_id TEXT,
+constraint recipes foreign key(recipes_id) references recipes(id),
 constraint users foreign key(users_id) references users(id)
 );
 

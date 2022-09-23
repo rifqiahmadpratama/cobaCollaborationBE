@@ -1,11 +1,11 @@
 const { v4: uuidv4 } = require("uuid");
-const savedRecipesModel = require("../models/savedrecipes");
+const likesRecipesModel = require("../models/likesrecipes");
 const createError = require("http-errors");
 const commonHelper = require("../helper/common");
 // const client = require('../config/redis')
 
-const savedRecipesController = {
-    getPaginationSavedRecipes: async (req, res) => {
+const likesRecipesController = {
+    getPaginationLikesRecipes: async (req, res) => {
         // console.log('coba');
         try {
             const page = parseInt(req.query.page) || 1;
@@ -16,13 +16,13 @@ const savedRecipesController = {
             if (search === undefined) {
                 querysearch = ``;
             } else {
-                querysearch = ` inner join recipes on savedrecipes.recipes_id = recipes.id inner join users on savedrecipes.users_id = users.id where name ilike '%${search}%' `;
+                querysearch = ` inner join recipes on likesrecipes.recipes_id = recipes.id inner join users on likesrecipes.users_id = users.id where name ilike '%${search}%' `;
             }
             const sortby = req.query.sortby || "created_on";
             const sort = req.query.sort || "asc";
-            const result = await savedRecipesModel.selectPagination({ limit, offset, sortby, sort, querysearch });
-            // console.log(await savedRecipesModel.selectPagination());
-            const totalData = parseInt((await savedRecipesModel.selectAll()).rowCount);
+            const result = await likesRecipesModel.selectPagination({ limit, offset, sortby, sort, querysearch });
+            // console.log(await likesRecipesModel.selectPagination());
+            const totalData = parseInt((await likesRecipesModel.selectAll()).rowCount);
             const totalPage = Math.ceil(totalData / limit);
             const pagination = {
                 currentPage: page,
@@ -35,33 +35,33 @@ const savedRecipesController = {
             res.send(createError(404));
         }
     },
-    getSavedRecipes: async (req, res) => {
+    getLikesRecipes: async (req, res) => {
         try {
             const id = req.params.id;
 
-            const checkSavedRecipes = await savedRecipesModel.selectSavedRecipes(id);
+            const checklikesRecipes = await likesRecipesModel.selectLikesRecipes(id);
 
             try {
-                if (checkSavedRecipes.rowCount == 0) throw "Recipes has not found";
+                if (checklikesRecipes.rowCount == 0) throw "Recipes has not found";
             } catch (error) {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            const result = await savedRecipesModel.selectSavedRecipes(id);
+            const result = await likesRecipesModel.selectLikesRecipes(id);
             // client.setEx(`transaction/${id}`, 60 * 60, JSON.stringify(result.rows))
             commonHelper.response(res, result.rows, 200, null);
         } catch (error) {
             res.send(createError(404));
         }
     },
-    insertSavedRecipes: async (req, res) => {
+    insertLikesRecipes: async (req, res) => {
         try {
             const id = uuidv4().toLocaleLowerCase();
 
             const { recipes_id, users_id } = req.body;
             // console.log(req.body.i);
 
-            const checkRecipes = await savedRecipesModel.selectRecipes(recipes_id);
+            const checkRecipes = await likesRecipesModel.selectRecipes(recipes_id);
             // console.log(checkRecipes);
             try {
                 if (checkRecipes.rowCount == 0) throw "Recipes has not found";
@@ -69,7 +69,7 @@ const savedRecipesController = {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            const checkUsers = await savedRecipesModel.selectUsers(users_id);
+            const checkUsers = await likesRecipesModel.selectUsers(users_id);
 
             try {
                 if (checkUsers.rowCount == 0) throw "Users has not found";
@@ -77,14 +77,14 @@ const savedRecipesController = {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            await savedRecipesModel.insertSavedRecipes(id, recipes_id, users_id);
-            commonHelper.response(res, null, 201, "New Saved Recipes Created");
+            await likesRecipesModel.insertLikesRecipes(id, recipes_id, users_id);
+            commonHelper.response(res, null, 201, "New Likes Recipes Created");
             // console.log(id, photo_id, name, description, category_id, users_id);
         } catch (error) {
             res.send(createError(400));
         }
     },
-    updateSavedRecipes: async (req, res) => {
+    updateLikesRecipes: async (req, res) => {
         try {
             const id = req.params.id;
             // const { product_id, quantity, discount, payment_id, status_payment, status_transaction, users_id } = req.body;
@@ -92,7 +92,7 @@ const savedRecipesController = {
             const { recipes_id, users_id } = req.body;
             // console.log(req.body.i);
 
-            const checkRecipes = await savedRecipesModel.selectRecipes(recipes_id);
+            const checkRecipes = await likesRecipesModel.selectRecipes(recipes_id);
             // console.log(checkRecipes);
             try {
                 if (checkRecipes.rowCount == 0) throw "Recipes has not found";
@@ -100,7 +100,7 @@ const savedRecipesController = {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            const checkUsers = await savedRecipesModel.selectUsers(users_id);
+            const checkUsers = await likesRecipesModel.selectUsers(users_id);
             // console.log(checkUsers);
             try {
                 if (checkUsers.rowCount == 0) throw "Users has not found";
@@ -108,32 +108,32 @@ const savedRecipesController = {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            await savedRecipesModel.updateSavedRecipes(id, recipes_id, users_id);
-            // console.log(await savedRecipesModel.updateSavedRecipes(id, recipes_id, users_id));
+            await likesRecipesModel.updateLikesRecipes(id, recipes_id, users_id);
+            // console.log(await likesRecipesModel.updatelikesRecipes(id, recipes_id, users_id));
             // console.log(id);
-            commonHelper.response(res, null, 201, "Saved Recipes Updated");
+            commonHelper.response(res, null, 201, "Likes Recipes Updated");
         } catch (error) {
             res.send(createError(400));
         }
     },
-    deleteSavedRecipes: async (req, res) => {
+    deleteLikesRecipes: async (req, res) => {
         try {
             const id = req.params.id;
 
-            const checkSavedRecipes = await savedRecipesModel.selectRecipes(id);
+            const checklikesRecipes = await likesRecipesModel.selectRecipes(id);
 
             try {
-                if (checkSavedRecipes.rowCount == 0) throw "Saved Recipes has not found";
+                if (checklikesRecipes.rowCount == 0) throw "likes Recipes has not found";
             } catch (error) {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            savedRecipesModel.deleteSavedRecipes(id);
-            commonHelper.response(res, null, 200, "Saved Recipes Deleted");
+            likesRecipesModel.deleteLikesRecipes(id);
+            commonHelper.response(res, null, 200, "Likes Recipes Deleted");
         } catch (error) {
             res.send(createError(404));
         }
     }
 };
 
-module.exports = savedRecipesController;
+module.exports = likesRecipesController;

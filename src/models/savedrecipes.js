@@ -10,26 +10,26 @@ const selectSavedRecipes = (id) => {
     return Pool.query(`select * from savedrecipes where id='${id}'`);
 }
 
-const selectRecipes = (id_recipes) => {
-    return Pool.query(`select * from recipes where id='${id_recipes}'`)
+const selectRecipes = (recipes_id) => {
+    return Pool.query(`select * from recipes where id='${recipes_id}'`)
 }
 
-const selectUsers = (id_users) => {
-    return Pool.query(`select * from users where id='${id_users}'`)
+const selectUsers = (users_id) => {
+    return Pool.query(`select * from users where id='${users_id}'`)
 }
 
 const insertSavedRecipes = (
     id,
-    id_recipes,
-    id_users
+    recipes_id,
+    users_id
 ) => {
-    return Pool.query(`insert into savedrecipes ( id, id_recipes,  id_users ) values ('${id}', '${id_recipes}', '${id_users}'  )`)
+    return Pool.query(`insert into savedrecipes ( id, recipes_id,  users_id ) values ('${id}', '${recipes_id}', '${users_id}'  )`)
 }
 
 const updateSavedRecipes = (
-    id, id_recipes, id_users
+    id, recipes_id, users_id
 ) => {
-    return Pool.query(`update savedrecipes set id_recipes = '${id_recipes}' , id_users = '${id_users}' WHERE id = '${id}'`)
+    return Pool.query(`update savedrecipes set recipes_id = '${recipes_id}' , users_id = '${users_id}' WHERE id = '${id}'`)
 }
 
 const deleteSavedRecipes = (id) => {
@@ -51,3 +51,5 @@ module.exports = {
     deleteSavedRecipes,
     countData
 }
+
+
