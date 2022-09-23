@@ -17,36 +17,39 @@ const selectRecipes = (id) => {
 const insertRecipes = (
     id,
     photo_id,
+    videos_id,
     name,
     description,
     category_id,
     users_id
 
 ) => {
-    return Pool.query(`insert into recipes ( id, photo_id, name, description, category_id, users_id )   values ( '${id}' , '${photo_id}' ,  '${name}' , '${description}' , '${category_id}' , '${users_id}' ) `)
+    return Pool.query(`insert into recipes ( id, photo_id, videos_id, name, description, category_id, users_id )   values ( '${id}' , '${photo_id}' , '${videos_id}', '${name}' , '${description}' , '${category_id}' , '${users_id}' ) `)
 }
 
 const updateRecipes = (
     id,
     photo_id,
+    videos_id,
     name,
     description,
     category_id,
     users_id
 
 ) => {
-    return Pool.query(`update recipes set photo_id = '${photo_id}' , name = '${name}' , description = '${description}' , category_id = '${category_id}' , users_id = '${users_id}' where id = '${id}' `)
+    return Pool.query(`update recipes set photo_id = '${photo_id}' , videos_id = '${videos_id}', name = '${name}' , description = '${description}' , category_id = '${category_id}' , users_id = '${users_id}' where id = '${id}' `)
 }
 
 const updateRecipesNoPhoto = (
     id,
+    videos_id,
     name,
     description,
     category_id,
     users_id
 
 ) => {
-    return Pool.query(`update recipes set name = '${name}' , description = '${description}' , category_id = '${category_id}' , users_id = '${users_id}' where id = '${id}' `)
+    return Pool.query(`update recipes set videos_id = '${videos_id}' , name = '${name}' , description = '${description}' , category_id = '${category_id}' , users_id = '${users_id}' where id = '${id}' `)
 }
 
 const deleteRecipes = (id) => {

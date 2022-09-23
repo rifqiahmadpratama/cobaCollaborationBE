@@ -84,7 +84,7 @@ const recipesController = {
         const response = await uploadToGoogleDrive(req.file, auth);
         const photo_id = `https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`;
 
-        const { name, description, category_id, users_id } = req.body;
+        const { name, description, category_id, users_id ,videos_id} = req.body;
 
         const checkCategory = await recipesModel.selectCategory(category_id);
 
@@ -103,7 +103,7 @@ const recipesController = {
           return commonHelper.response(res, null, 404, error);
         }
 
-        await recipesModel.insertRecipes(id, photo_id, name, description, category_id, users_id);
+        await recipesModel.insertRecipes(id, photo_id,videos_id, name, description, category_id, users_id);
         commonHelper.response(res, null, 201, "New Recipes Created");
         // console.log(id, photo_id, name, description, category_id, users_id);
       }
@@ -129,7 +129,7 @@ const recipesController = {
         const response = await uploadToGoogleDrive(req.file, auth);
         const photo_id = `https://drive.google.com/thumbnail?id=${response.data.id}&sz=s1080`;
 
-        const { name, description, category_id, users_id } = req.body;
+        const { name, description, category_id, users_id ,videos_id} = req.body;
 
         const checkCategory = await recipesModel.selectCategory(category_id);
 
@@ -147,14 +147,14 @@ const recipesController = {
           return commonHelper.response(res, null, 404, error);
         }
 
-        await recipesModel.updateRecipes(id, photo_id, name, description, category_id, users_id);
+        await recipesModel.updateRecipes(id, photo_id,videos_id, name, description, category_id, users_id);
         // console.log(id, photo_id, name, description, category_id, id_users);
         // const result = await productModel.selectProduct(id)
         // client.setEx(`product/${id}`, 60 * 60, JSON.stringify(result.rows))
 
         commonHelper.response(res, null, 201, "Recipes Update");
       } else {
-        const { name, description, category_id, users_id } = req.body;
+        const { name, description, category_id, users_id ,videos_id} = req.body;
 
         const checkCategory = await recipesModel.selectCategory(category_id);
 
@@ -172,7 +172,7 @@ const recipesController = {
           return commonHelper.response(res, null, 404, error);
         }
 
-        await recipesModel.updateRecipesNoPhoto(id, name, description, category_id, users_id);
+        await recipesModel.updateRecipesNoPhoto(id,videos_id, name, description, category_id, users_id);
         // console.log(id, photo_id, name, description, category_id, id_users);
         // const result = await productModel.selectProduct(id)
         // client.setEx(`product/${id}`, 60 * 60, JSON.stringify(result.rows))
