@@ -13,16 +13,18 @@ const likesRecipesController = {
             const offset = (page - 1) * limit;
             const search = req.query.search;
             let querysearch = "";
+            let totalData = "";
             if (search === undefined) {
                 querysearch = ``;
+                totalData = parseInt((await likesRecipesModel.selectAll()).rowCount);
             } else {
-                querysearch = ` inner join recipes on likesrecipes.recipes_id = recipes.id inner join users on likesrecipes.users_id = users.id where name ilike '%${search}%' `;
+                querysearch = ` inner join recipes on likesrecipes.recipes_id = recipes.id inner join users on likesrecipes.users_id = users.id where recipes.name ilike '%${search}%' `;
+                totalData = parseInt((await likesRecipesModel.selectAllSearch(querysearch)).rowCount);
             }
             const sortby = req.query.sortby || "created_on";
             const sort = req.query.sort || "asc";
             const result = await likesRecipesModel.selectPagination({ limit, offset, sortby, sort, querysearch });
             // console.log(await likesRecipesModel.selectPagination());
-            const totalData = parseInt((await likesRecipesModel.selectAll()).rowCount);
             const totalPage = Math.ceil(totalData / limit);
             const pagination = {
                 currentPage: page,
@@ -92,6 +94,14 @@ const likesRecipesController = {
             const { recipes_id, users_id } = req.body;
             // console.log(req.body.i);
 
+            const checklikesRecipes = await likesRecipesModel.selectLikesRecipes(id);
+
+            try {
+                if (checklikesRecipes.rowCount == 0) throw "Likes Recipes has not found";
+            } catch (error) {
+                return commonHelper.response(res, null, 404, error);
+            }
+
             const checkRecipes = await likesRecipesModel.selectRecipes(recipes_id);
             // console.log(checkRecipes);
             try {
@@ -120,10 +130,10 @@ const likesRecipesController = {
         try {
             const id = req.params.id;
 
-            const checklikesRecipes = await likesRecipesModel.selectRecipes(id);
+            const checklikesRecipes = await likesRecipesModel.selectLikesRecipes(id);
 
             try {
-                if (checklikesRecipes.rowCount == 0) throw "likes Recipes has not found";
+                if (checklikesRecipes.rowCount == 0) throw "Likes Recipes has not found";
             } catch (error) {
                 return commonHelper.response(res, null, 404, error);
             }

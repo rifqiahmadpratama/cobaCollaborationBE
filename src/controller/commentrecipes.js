@@ -13,16 +13,18 @@ const commentRecipesController = {
             const offset = (page - 1) * limit;
             const search = req.query.search;
             let querysearch = "";
+            let totalData = "";
             if (search === undefined) {
                 querysearch = ``;
+                totalData = parseInt((await commentRecipesModel.selectAll()).rowCount);
             } else {
-                querysearch = ` inner join recipes on commentrecipes.recipes_id = recipes.id inner join users on commentrecipes.users_id = users.id where name ilike '%${search}%' `;
+                querysearch = ` inner join recipes on commentrecipes.recipes_id = recipes.id inner join users on commentrecipes.users_id = users.id where recipes.name ilike '%${search}%' `;
+                totalData = parseInt((await commentRecipesModel.selectAllSearch(querysearch)).rowCount);
             }
             const sortby = req.query.sortby || "created_on";
             const sort = req.query.sort || "asc";
             const result = await commentRecipesModel.selectPagination({ limit, offset, sortby, sort, querysearch });
             // console.log(await commentRecipesModel.selectPagination());
-            const totalData = parseInt((await commentRecipesModel.selectAll()).rowCount);
             const totalPage = Math.ceil(totalData / limit);
             const pagination = {
                 currentPage: page,
@@ -58,7 +60,7 @@ const commentRecipesController = {
         try {
             const id = uuidv4().toLocaleLowerCase();
 
-            const { recipes_id, users_id } = req.body;
+            const { recipes_id, users_id, comment } = req.body;
             // console.log(req.body.i);
 
             const checkRecipes = await commentRecipesModel.selectRecipes(recipes_id);
@@ -77,7 +79,7 @@ const commentRecipesController = {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            await commentRecipesModel.insertCommentRecipes(id, recipes_id, users_id);
+            await commentRecipesModel.insertCommentRecipes(id, recipes_id, users_id,comment);
             commonHelper.response(res, null, 201, "New Comment Recipes Created");
             // console.log(id, photo_id, name, description, category_id, users_id);
         } catch (error) {
@@ -89,8 +91,16 @@ const commentRecipesController = {
             const id = req.params.id;
             // const { product_id, quantity, discount, payment_id, status_payment, status_transaction, users_id } = req.body;
 
-            const { recipes_id, users_id } = req.body;
+            const { recipes_id, users_id ,comment} = req.body;
             // console.log(req.body.i);
+
+            const checkCommentRecipes = await commentRecipesModel.selectCommentRecipes(id);
+
+            try {
+                if (checkCommentRecipes.rowCount == 0) throw "Comment Recipes has not found";
+            } catch (error) {
+                return commonHelper.response(res, null, 404, error);
+            }
 
             const checkRecipes = await commentRecipesModel.selectRecipes(recipes_id);
             // console.log(checkRecipes);
@@ -108,7 +118,7 @@ const commentRecipesController = {
                 return commonHelper.response(res, null, 404, error);
             }
 
-            await commentRecipesModel.updateCommentRecipes(id, recipes_id, users_id);
+            await commentRecipesModel.updateCommentRecipes(id, recipes_id, users_id, comment );
             // console.log(await commentRecipesModel.updatecommentRecipes(id, recipes_id, users_id));
             // console.log(id);
             commonHelper.response(res, null, 201, "Comment Recipes Updated");
@@ -120,7 +130,7 @@ const commentRecipesController = {
         try {
             const id = req.params.id;
 
-            const checkcommentRecipes = await commentRecipesModel.selectRecipes(id);
+            const checkcommentRecipes = await commentRecipesModel.selectCommentRecipes(id);
 
             try {
                 if (checkcommentRecipes.rowCount == 0) throw "Comment Recipes has not found";

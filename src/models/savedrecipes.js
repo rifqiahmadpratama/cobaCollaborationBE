@@ -3,6 +3,10 @@ const selectAll = () => {
     return Pool.query(`select * from savedrecipes`);
 }
 
+const selectAllSearch = (querysearch) => {
+    return Pool.query(`select * from savedrecipes  ${querysearch} `);
+}
+
 const selectPagination = ({ limit, offset, sortby, sort, querysearch }) => {
     return Pool.query(`select * from savedrecipes  ${querysearch}  order by ${sortby} ${sort} limit ${limit} offset ${offset} `)
 }
@@ -42,6 +46,7 @@ const countData = () => {
 
 module.exports = {
     selectAll,
+    selectAllSearch,
     selectPagination,
     selectSavedRecipes,
     selectUsers,

@@ -1,8 +1,10 @@
-
-
 const Pool = require('../config/db')
 const selectAll = () => {
     return Pool.query(`select * from commentrecipes`);
+}
+
+const selectAllSearch = (querysearch) => {
+    return Pool.query(`select * from commentrecipes  ${querysearch} `);
 }
 
 const selectPagination = ({ limit, offset, sortby, sort, querysearch }) => {
@@ -23,15 +25,19 @@ const selectUsers = (users_id) => {
 const insertCommentRecipes = (
     id,
     recipes_id,
-    users_id
+    users_id,
+    comment
 ) => {
-    return Pool.query(`insert into commentrecipes ( id, recipes_id,  users_id ) values ('${id}', '${recipes_id}', '${users_id}'  )`)
+    return Pool.query(`insert into commentrecipes ( id, recipes_id,  users_id , comment ) values ('${id}', '${recipes_id}', '${users_id}', '${comment}'  )`)
 }
 
 const updateCommentRecipes = (
-    id, recipes_id, users_id
+    id, 
+    recipes_id, 
+    users_id,
+    comment
 ) => {
-    return Pool.query(`update commentrecipes set recipes_id = '${recipes_id}' , users_id = '${users_id}' WHERE id = '${id}'`)
+    return Pool.query(`update commentrecipes set recipes_id = '${recipes_id}' , users_id = '${users_id}' , comment = '${comment}' WHERE id = '${id}'`)
 }
 
 const deleteCommentRecipes = (id) => {
@@ -44,6 +50,7 @@ const countData = () => {
 
 module.exports = {
     selectAll,
+    selectAllSearch,
     selectPagination,
     selectCommentRecipes,
     selectUsers,

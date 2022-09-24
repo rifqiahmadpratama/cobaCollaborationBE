@@ -1,8 +1,10 @@
-
-
 const Pool = require('../config/db')
 const selectAll = () => {
     return Pool.query(`select * from likesrecipes`);
+}
+
+const selectAllSearch = (querysearch) => {
+    return Pool.query(`select * from likesrecipes  ${querysearch} `);
 }
 
 const selectPagination = ({ limit, offset, sortby, sort, querysearch }) => {
@@ -44,6 +46,7 @@ const countData = () => {
 
 module.exports = {
     selectAll,
+    selectAllSearch,
     selectPagination,
     selectLikesRecipes,
     selectUsers,

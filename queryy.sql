@@ -80,6 +80,7 @@ CREATE TABLE savedrecipes (
 id TEXT NOT NULL PRIMARY KEY,  
 recipes_id TEXT,
 users_id TEXT,
+created_on timestamp default CURRENT_TIMESTAMP not null,
 constraint recipes foreign key(recipes_id) references recipes(id),
 constraint users foreign key(users_id) references users(id)
 );
@@ -90,6 +91,7 @@ CREATE TABLE likesrecipes (
 id TEXT NOT NULL PRIMARY KEY,  
 recipes_id TEXT,
 users_id TEXT,
+created_on timestamp default CURRENT_TIMESTAMP not null,
 constraint recipes foreign key(recipes_id) references recipes(id),
 constraint users foreign key(users_id) references users(id)
 );
@@ -99,6 +101,8 @@ CREATE TABLE commentrecipes (
 id TEXT NOT NULL PRIMARY KEY,  
 recipes_id TEXT,
 users_id TEXT,
+comment TEXT,
+created_on timestamp default CURRENT_TIMESTAMP not null,
 constraint recipes foreign key(recipes_id) references recipes(id),
 constraint users foreign key(users_id) references users(id)
 );

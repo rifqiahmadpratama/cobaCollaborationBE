@@ -13,16 +13,18 @@ const savedRecipesController = {
             const offset = (page - 1) * limit;
             const search = req.query.search;
             let querysearch = "";
+            let totalData = "";
             if (search === undefined) {
                 querysearch = ``;
+                totalData = parseInt((await savedRecipesModel.selectAll()).rowCount);
             } else {
-                querysearch = ` inner join recipes on savedrecipes.recipes_id = recipes.id inner join users on savedrecipes.users_id = users.id where name ilike '%${search}%' `;
+                querysearch = ` inner join recipes on savedrecipes.recipes_id = recipes.id inner join users on savedrecipes.users_id = users.id where recipes.name ilike '%${search}%' `;
+                totalData = parseInt((await savedRecipesModel.selectAllSearch(querysearch)).rowCount);
             }
             const sortby = req.query.sortby || "created_on";
             const sort = req.query.sort || "asc";
             const result = await savedRecipesModel.selectPagination({ limit, offset, sortby, sort, querysearch });
             // console.log(await savedRecipesModel.selectPagination());
-            const totalData = parseInt((await savedRecipesModel.selectAll()).rowCount);
             const totalPage = Math.ceil(totalData / limit);
             const pagination = {
                 currentPage: page,
@@ -92,6 +94,14 @@ const savedRecipesController = {
             const { recipes_id, users_id } = req.body;
             // console.log(req.body.i);
 
+            const checkSavedRecipes = await savedRecipesModel.selectSavedRecipes(id);
+
+            try {
+                if (checkSavedRecipes.rowCount == 0) throw "Saved Recipes has not found";
+            } catch (error) {
+                return commonHelper.response(res, null, 404, error);
+            }
+            
             const checkRecipes = await savedRecipesModel.selectRecipes(recipes_id);
             // console.log(checkRecipes);
             try {
@@ -120,7 +130,7 @@ const savedRecipesController = {
         try {
             const id = req.params.id;
 
-            const checkSavedRecipes = await savedRecipesModel.selectRecipes(id);
+            const checkSavedRecipes = await savedRecipesModel.selectSavedRecipes(id);
 
             try {
                 if (checkSavedRecipes.rowCount == 0) throw "Saved Recipes has not found";
