@@ -17,9 +17,10 @@ router
   .post("/refresh-token", ControllerUsers.refreshToken)
   .get("/profile", protect, ControllerUsers.profileAccount)
   .put("/profile", protect, upload.single("picture"), ControllerUsers.profileAccount)
+  .delete("/profile", protect, ControllerUsers.profileAccount)
   .put("/profile/changeEmail", protect, ControllerUsers.changeEmail)
   .put("/profile/changePassword", protect, ControllerUsers.changePassword)
-  .delete("/profile", protect, ControllerUsers.profileAccount)
+
 
 
 // .post("/uploadfiledrive", upload.single("picture"), async (req, res) => {

@@ -106,6 +106,7 @@ const UserController = {
           commonHelper.response(res, null, 201, "Profile has been updated");
         }
       } else if (typeof queryUpdate === "undefined" && typeof queryDelete === "string") {
+        console.log("siap delete");
         await usersModel.deleteAccount(email);
         commonHelper.response(res, null, 200, "Account has been deleted");
       }

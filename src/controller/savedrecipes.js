@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require("uuid");
+// const { v4: uuidv4 } = require("uuid");
 const savedRecipesModel = require("../models/savedrecipes");
 const createError = require("http-errors");
 const commonHelper = require("../helper/common");
@@ -58,10 +58,20 @@ const savedRecipesController = {
     },
     insertSavedRecipes: async (req, res) => {
         try {
-            const id = uuidv4().toLocaleLowerCase();
+            // const id = uuidv4().toLocaleLowerCase();
 
             const { recipes_id, users_id } = req.body;
             // console.log(req.body.i);
+
+            const id = users_id
+
+            const checkSavedRecipes = await savedRecipesModel.selectSavedRecipes(id);
+
+            try {
+                if (!checkSavedRecipes.rowCount == 0) throw "Saved Recipes has created before";
+            } catch (error) {
+                return commonHelper.response(res, null, 404, error);
+            }
 
             const checkRecipes = await savedRecipesModel.selectRecipes(recipes_id);
             // console.log(checkRecipes);
@@ -144,6 +154,66 @@ const savedRecipesController = {
             res.send(createError(404));
         }
     }
+    ,
+    getLikesRecipesByUser: async (req, res) => {
+        // console.log('coba');
+        try {
+            
+            const id = req.params.id;
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
+            const offset = (page - 1) * limit;
+            // const search = req.query.search;
+            let querysearch = `inner join recipes on savedrecipes.recipes_id = recipes.id where savedrecipes.users_id = '${id}'`;
+            // let totalData = ``;
+            // if (search === undefined) {
+            //     querysearch = ``;
+            //     totalData = parseInt((await likesRecipesModel.selectAll()).rowCount);
+            // } else {
+            //     querysearch = ` inner join recipes on likesrecipes.recipes_id = recipes.id inner join users on likesrecipes.users_id = users.id where recipes.name ilike '%${search}%' `;
+            let totalData = parseInt((await savedRecipesModel.selectAllSearch(querysearch)).rowCount);
+            // }
+            const sortby = req.query.sortby || "created_on";
+            const sort = req.query.sort || "desc";
+            const result = await savedRecipesModel.selectPaginationByUser({ limit, offset, sortby, sort, querysearch });
+            // console.log(await likesRecipesModel.selectPagination());
+            const totalPage = Math.ceil(totalData / limit);
+            const pagination = {
+                currentPage: page,
+                limit: limit,
+                totalData: totalData,
+                totalPage: totalPage,
+            };
+            commonHelper.response(res, result.rows, 200, null, pagination);
+        } catch (error) {
+            res.send(createError(404));
+        }
+    },
+    
+    getLikesRecipesByUserByIdRecipes: async (req, res) => {
+        try {
+            const users_id =  req.query.users_id
+            const recipes_id = req.query.recipes_id
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
+            const offset = (page - 1) * limit;
+            let querysearch = `inner join recipes on savedrecipes.recipes_id = recipes.id where savedrecipes.users_id = '${users_id}' AND savedrecipes.recipes_id = '${recipes_id}'`;
+            let totalData = parseInt((await savedRecipesModel.selectAllSearch(querysearch)).rowCount);
+            const sortby = req.query.sortby || "created_on";
+            const sort = req.query.sort || "desc";
+            const result = await savedRecipesModel.selectPaginationByUser({ limit, offset, sortby, sort, querysearch });
+            const totalPage = Math.ceil(totalData / limit);
+            const pagination = {
+                currentPage: page,
+                limit: limit,
+                totalData: totalData,
+                totalPage: totalPage,
+            };
+            commonHelper.response(res, result.rows, 200, null, pagination);
+        } catch (error) {
+            res.send(createError(404));
+        }
+    },
 };
 
 module.exports = savedRecipesController;

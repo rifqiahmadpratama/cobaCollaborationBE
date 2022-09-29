@@ -44,6 +44,10 @@ const countData = () => {
     return Pool.query("SELECT COUNT(*) FROM savedrecipes");
 };
 
+const selectPaginationByUser = ({ limit, offset, sortby, sort, querysearch }) => {
+    return Pool.query(`select savedrecipes.id, savedrecipes.recipes_id , savedrecipes.users_id , savedrecipes.created_on , recipes.id as recipes_id , recipes.name as recipes_name , recipes.users_id as recipes_users_id , recipes.description as recipes_description , recipes.photo_id as recipes_photo_id , recipes.videos_id as recipes_videos_id , recipes.category_id as recipes_category_id , recipes.created_on as recipes_created_on , recipes.updated_on as recipes_update_on from savedrecipes   ${querysearch}  order by ${sortby} ${sort} limit ${limit} offset ${offset} `)
+}
+
 module.exports = {
     selectAll,
     selectAllSearch,
@@ -54,7 +58,8 @@ module.exports = {
     insertSavedRecipes,
     updateSavedRecipes,
     deleteSavedRecipes,
-    countData
+    countData,
+    selectPaginationByUser
 }
 
 

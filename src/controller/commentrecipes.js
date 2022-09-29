@@ -143,7 +143,33 @@ const commentRecipesController = {
         } catch (error) {
             res.send(createError(404));
         }
-    }
+    },
+    getCommentRecipesByIdRecipes: async (req, res) => {
+        // console.log('coba');
+        try {
+            
+            const id = req.params.id;
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
+            const offset = (page - 1) * limit;
+            let querysearch = ` inner join recipes on commentrecipes.recipes_id = recipes.id inner join users on commentrecipes.users_id = users.id  where commentrecipes.recipes_id = '${id}'`;
+            let totalData = parseInt((await commentRecipesModel.selectAllSearch(querysearch)).rowCount);
+          
+            const sortby = req.query.sortby || "commentrecipes.created_on";
+            const sort = req.query.sort || "desc";
+            const result = await commentRecipesModel.selectPaginationByIdRecipes({ limit, offset, sortby, sort, querysearch });
+            const totalPage = Math.ceil(totalData / limit);
+            const pagination = {
+                currentPage: page,
+                limit: limit,
+                totalData: totalData,
+                totalPage: totalPage,
+            };
+            commonHelper.response(res, result.rows, 200, null, pagination);
+        } catch (error) {
+            res.send(createError(404));
+        }
+    },
 };
 
 module.exports = commentRecipesController;

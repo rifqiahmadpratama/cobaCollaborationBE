@@ -4,6 +4,8 @@ const savedRecipesController = require("../controller/savedrecipes");
 const { protect } = require("../middlewares/auth");
 
 router.get("/", savedRecipesController.getPaginationSavedRecipes);
+router.get("/ByUserByIdRecipes", savedRecipesController.getLikesRecipesByUserByIdRecipes);
+router.get("/ByUser/:id", savedRecipesController.getLikesRecipesByUser);
 router.get("/:id", savedRecipesController.getSavedRecipes);
 router.post("/", protect, savedRecipesController.insertSavedRecipes);
 router.put("/:id", protect, savedRecipesController.updateSavedRecipes);

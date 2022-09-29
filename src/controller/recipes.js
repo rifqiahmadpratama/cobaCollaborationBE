@@ -183,7 +183,6 @@ const recipesController = {
       res.send(createError(400));
     }
   },
-
   deleteRecipes: async (req, res) => {
     try {
       const id = req.params.id;
@@ -202,6 +201,7 @@ const recipesController = {
     }
   },
 
+  // from user
   getPaginationRecipestByUser: async (req, res) => {
     try {
       const id = req.params.id;
@@ -240,6 +240,7 @@ const recipesController = {
     }
   },
 
+  // from category
   getPaginationRecipesCategory: async (req, res) => {
     try {
       const page = parseInt(req.query.page) || 1;
@@ -285,6 +286,151 @@ const recipesController = {
       res.send(createError(404));
     }
   },
+
+  // from saved, likes, and comment
+  getPaginationRecipesSavedRecipes: async (req, res) => {
+    console.log("cek");
+    try {
+      // console.log('cona');
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = (page - 1) * limit;
+      // console.log(offset);
+
+      const search = req.query.search;
+      let querysearch = "";
+      let totalData = "";
+      // let result = "";
+
+      if (search === null || search === undefined) {
+        querysearch = ``;
+        totalData = parseInt((await recipesModel.selectAllSavedRecipes({querysearch})).rowCount);
+      } else {
+        querysearch = ` where recipes.name ilike '%${search.toLowerCase()}%' `;
+        totalData = parseInt((await recipesModel.selectAllSavedRecipes({querysearch})).rowCount);
+      }
+      const sortby = req.query.sortby || "ValueFrequency";
+      const sort = req.query.sort || "desc";
+      const result = await recipesModel.selectPaginationSavedRecipes({
+        limit,
+        offset,
+        sortby,
+        sort,
+        querysearch,
+      });
+
+      // console.log(result);
+      const totalPage = Math.ceil(totalData / limit);
+      const pagination = {
+        currentPage: page,
+        limit: limit,
+        totalData: totalData,
+        totalPage: totalPage,
+      };
+      // console.log(pagination);
+
+      commonHelper.response(res, result.rows, 200, null, pagination);
+      // console.log(result);
+    } catch (error) {
+      res.send(createError(404));
+    }
+  },
+
+  getPaginationRecipesLikesRecipes: async (req, res) => {
+    try {
+      // console.log('cona');
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = (page - 1) * limit;
+      // console.log(offset);
+
+      const search = req.query.search;
+      let querysearch = "";
+      let totalData = "";
+      // let result = "";
+
+      if (search === null || search === undefined) {
+        querysearch = ``;
+        totalData = parseInt((await recipesModel.selectAllLikesRecipes({querysearch})).rowCount);
+      } else {
+        querysearch = ` where recipes.name ilike '%${search.toLowerCase()}%' `;
+        totalData = parseInt((await recipesModel.selectAllLikesRecipes({querysearch})).rowCount);
+      }
+      const sortby = req.query.sortby || "ValueFrequency";
+      const sort = req.query.sort || "desc";
+      const result = await recipesModel.selectPaginationLikesRecipes({
+        limit,
+        offset,
+        sortby,
+        sort,
+        querysearch,
+      });
+
+      // console.log(result);
+      const totalPage = Math.ceil(totalData / limit);
+      const pagination = {
+        currentPage: page,
+        limit: limit,
+        totalData: totalData,
+        totalPage: totalPage,
+      };
+      // console.log(pagination);
+
+      commonHelper.response(res, result.rows, 200, null, pagination);
+      // console.log(result);
+    } catch (error) {
+      res.send(createError(404));
+    }
+  },
+
+  getPaginationRecipesCommentRecipes: async (req, res) => {
+    try {
+      // console.log('cona');
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = (page - 1) * limit;
+      // console.log(offset);
+
+      const search = req.query.search;
+      let querysearch = "";
+      let totalData = "";
+      // let result = "";
+
+      if (search === null || search === undefined) {
+        querysearch = ``;
+        totalData = parseInt((await recipesModel.selectAllCommentRecipes({querysearch})).rowCount);
+      } else {
+        querysearch = ` where recipes.name ilike '%${search.toLowerCase()}%' `;
+        totalData = parseInt((await recipesModel.selectAllCommentRecipes({querysearch})).rowCount);
+      }
+      const sortby = req.query.sortby || "ValueFrequency";
+      const sort = req.query.sort || "desc";
+      const result = await recipesModel.selectPaginationCommentRecipes({
+        limit,
+        offset,
+        sortby,
+        sort,
+        querysearch,
+      });
+
+      // console.log(result);
+      const totalPage = Math.ceil(totalData / limit);
+      const pagination = {
+        currentPage: page,
+        limit: limit,
+        totalData: totalData,
+        totalPage: totalPage,
+      };
+      // console.log(pagination);
+
+      commonHelper.response(res, result.rows, 200, null, pagination);
+      // console.log(result);
+    } catch (error) {
+      res.send(createError(404));
+    }
+  },
+
+
 };
 
 module.exports = recipesController;
