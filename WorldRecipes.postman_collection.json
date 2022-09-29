@@ -1,0 +1,2605 @@
+{
+	"info": {
+		"_postman_id": "914b9435-9def-43ec-b802-5e083823f273",
+		"name": "WorldRecipes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22685913"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "user5",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "american_latin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "user12345@",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "hakiman",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "08192920012",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin12345@",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "asianrecipes@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "user12345@",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login user example",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "american_latin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "user12345@",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MzYyOTg2NiwiZXhwIjoxNjYzNjM3MDY2LCJpc3MiOiJzaG9wZXJzIn0.1wY3yUIXVphomyCLj2aOHOZsDaFM2-MCudulNk_l5bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/profile/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"profile",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtZXJpY2FuX2xhdGluQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzOTkzMTIxLCJleHAiOjE2NjQwMDAzMjEsImlzcyI6InNob3BlcnMifQ.YQzMPuKWVaz9XEC8Wct_CU6PIr58hKO3zSFtzuNkxWQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "hakimani",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "women",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "000000001",
+											"type": "text"
+										},
+										{
+											"key": "date_of_birth",
+											"value": "2000-12-12",
+											"type": "text"
+										},
+										{
+											"key": "picture",
+											"type": "file",
+											"src": "/C:/Users/PC/Downloads/New folder (2)/kaos/6.jpg"
+										},
+										{
+											"key": "role",
+											"value": "admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/profile?update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"profile"
+									],
+									"query": [
+										{
+											"key": "update",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile change email",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMDE1OTM1LCJleHAiOjE2NjEwMjMxMzUsImlzcyI6InNob3BlcnMifQ.lqi9E6B79xBEARsSZUVi0V80KoxvCAlq3-oCDu9OhR8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "testuser2@mail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/profile/changeEmail",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"profile",
+										"changeEmail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile change password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMDE4MDg0LCJleHAiOjE2NjEwMjUyODQsImlzcyI6InNob3BlcnMifQ.gdnJhW_Z-wUEwvqs13mjD4p8OhZfAFNaP6Fpe_6W_1g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "lailal12@3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/profile/changePassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"profile",
+										"changePassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete account",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtZXJpY2FuX2xhdGluQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzOTg0MjAwLCJleHAiOjE2NjM5OTE0MDAsImlzcyI6InNob3BlcnMifQ.TLuovNx__5LcJiQUn3gO4UN_W-zPA8HdSxiZ7i4-rPM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/profile?delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"profile"
+									],
+									"query": [
+										{
+											"key": "delete",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refresh token",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "refreshToken",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzUwMDE4MywiZXhwIjoxNjYzNTg2NTgzfQ.-EkWXntol68t8gz3Sa5BODexIoFYj8envalfPMApsbM",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/users/refresh-token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"refresh-token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "all category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbGxlcnRlc3RAc2VsbGVyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwNTkzMzUsImV4cCI6MTY2MTA2NjUzNSwiaXNzIjoic2hvcGVycyJ9.Qsgsl8ZaMuZV0tIiUZ3-WL5oQ-samf8BrSRHXHG6y-I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all category pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MTA1NDM2OCwiZXhwIjoxNjYxMDYxNTY4LCJpc3MiOiJzaG9wZXJzIn0.3_NMhiaX39sRYpNloVlrhv5kf1x_o1jVkCuOfFhvmX4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category?sortby=id&sort=desc&page=1&limit=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "id"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all category search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MTA1NDM2OCwiZXhwIjoxNjYxMDYxNTY4LCJpc3MiOiJzaG9wZXJzIn0.3_NMhiaX39sRYpNloVlrhv5kf1x_o1jVkCuOfFhvmX4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category?search=asia",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "asia"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all category search pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbGxlcnRlc3RAc2VsbGVyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwNTkzMzUsImV4cCI6MTY2MTA2NjUzNSwiaXNzIjoic2hvcGVycyJ9.Qsgsl8ZaMuZV0tIiUZ3-WL5oQ-samf8BrSRHXHG6y-I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category?search=asia&category?sortby=id&sort=asc&page=1&limit=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "asia"
+										},
+										{
+											"key": "category?sortby",
+											"value": "id"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbGxlcnRlc3RAc2VsbGVyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwNTkzMzUsImV4cCI6MTY2MTA2NjUzNSwiaXNzIjoic2hvcGVycyJ9.Qsgsl8ZaMuZV0tIiUZ3-WL5oQ-samf8BrSRHXHG6y-I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category/category-1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category",
+										"category-1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MzY5ODA2OCwiZXhwIjoxNjYzNzA1MjY4LCJpc3MiOiJzaG9wZXJzIn0.osQo755z11aKJMy3LDi0Tv3Rx3bcOldN4VIG-VVbmCs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Asian Recipes",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzUwODU4MiwiZXhwIjoxNjYzNTE1NzgyLCJpc3MiOiJzaG9wZXJzIn0.nT0UZbQJpRZZ0FG84dOr5KbhaenDXURpLY0DylJtlQU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "wers",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category/category-7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category",
+										"category-7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzUwODU4MiwiZXhwIjoxNjYzNTE1NzgyLCJpc3MiOiJzaG9wZXJzIn0.nT0UZbQJpRZZ0FG84dOr5KbhaenDXURpLY0DylJtlQU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/category/category-7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"category",
+										"category-7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Recipes",
+					"item": [
+						{
+							"name": "all recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0NUB1c2VyLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMTM1Njc3LCJleHAiOjE2NjExNDI4NzcsImlzcyI6InNob3BlcnMifQ.bi6qKkWlqIfw0F5pSmJ-lVGQ6v8I_EDlbUnLLc7Icxg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes?sortby=created_on&sort=desc&page=1&limit=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes by category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0NUB1c2VyLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMTM1Njc3LCJleHAiOjE2NjExNDI4NzcsImlzcyI6InNob3BlcnMifQ.bi6qKkWlqIfw0F5pSmJ-lVGQ6v8I_EDlbUnLLc7Icxg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes/category/asian",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes",
+										"category",
+										"asian"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes by user recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes/usersrecipes/ef052ec2-2d32-4c79-a0d4-a5ed0ed11999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes",
+										"usersrecipes",
+										"ef052ec2-2d32-4c79-a0d4-a5ed0ed11999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes by savedrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes/bysavedrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes",
+										"bysavedrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes by likesrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes/bylikesrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes",
+										"bylikesrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes by commentrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes/bycommentrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes",
+										"bycommentrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwNjExNTgsImV4cCI6MTY2MTA2ODM1OCwiaXNzIjoic2hvcGVycyJ9.PgNRudYnaNE9COimcJWpm1gE7imeTmRYoMrt0GlYm9A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8011/api/v1/product?sortby=name&sort=asc&page=1&limit=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8011",
+									"path": [
+										"api",
+										"v1",
+										"product"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "name"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwNjExNTgsImV4cCI6MTY2MTA2ODM1OCwiaXNzIjoic2hvcGVycyJ9.PgNRudYnaNE9COimcJWpm1gE7imeTmRYoMrt0GlYm9A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8011/api/v1/product?search=Boxer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8011",
+									"path": [
+										"api",
+										"v1",
+										"product"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "Boxer"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all recipes search pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwNjExNTgsImV4cCI6MTY2MTA2ODM1OCwiaXNzIjoic2hvcGVycyJ9.PgNRudYnaNE9COimcJWpm1gE7imeTmRYoMrt0GlYm9A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8011/api/v1/product?search=prOduct&sortby=name&sort=asc&page=1&limit=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8011",
+									"path": [
+										"api",
+										"v1",
+										"product"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "prOduct"
+										},
+										{
+											"key": "sortby",
+											"value": "name"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbGxlcnRlc3RAc2VsbGVyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMzU4MTUsImV4cCI6MTY2MTE0MzAxNSwiaXNzIjoic2hvcGVycyJ9.zHtNSpLoyBEVCSUTJd5lfmCJeMC3qzSuisbnalWtIss",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8011/api/v1/product/1addb87f-0403-461e-91e1-315a6fa8aaf5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8011",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"1addb87f-0403-461e-91e1-315a6fa8aaf5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MzY5ODA2OCwiZXhwIjoxNjYzNzA1MjY4LCJpc3MiOiJzaG9wZXJzIn0.osQo755z11aKJMy3LDi0Tv3Rx3bcOldN4VIG-VVbmCs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Sesame Crusted Tofu Steaks",
+											"type": "text"
+										},
+										{
+											"key": "photo_id",
+											"type": "file",
+											"src": "/C:/Users/PC/Pictures/Sesame Crusted Tofu Steaks.jpg"
+										},
+										{
+											"key": "description",
+											"value": "Crispy Sesame-Crusted Tofu Steaks\nLet’s get the uncomfortable truth about tofu out of the way. For many people, tofu looks weird. And has a strange texture they struggle with.\nIt’s not helped by the fact that the internet is awash with recipes that use tofu as a meat substitute in classic dishes, but doesn’t exactly improve them. Like tofu bolognese and tofu cottage pie – no!  Or they try to convince you that tofu cheesecake is totally a thing and stacks up to the real deal. *She ducks as vegans everywhere throw rotten tomatoes at her.*\nSo what’s the point of tofu, one might ask?\nBecause when prepared well, it IS delicious. It’s one of the world’s greatest sources of plant-based proteins. It’s low calorie, low carb, has a wonderful taste of fresh soy beans and is a sponge for added flavour.\nToday then is a simple recipe designed to make the most of tofu. We cut the tofu into steaks, coat it with sesame seeds and then pan-fry until crispy. The crunchy sesame crust adds a stack of flavour itself, but also creates a coating that the Teriyaki Sauce clings to. You literally get a squirt of Teriyaki Sauce in your mouth with every bite – and we love it!\n•\t I use black and white sesame seeds for visual interest. But you can just use one type.\n•\t That crispy sesame crust! SWOON!\nBest Tofu for Tofu Steaks\nTofu is widely available these days. It comes in a broad range of textures and styles, from super-delicate, creamy, pudding-like versions which needs to be handled with extreme care, to firm and almost haloumi-like in texture.\nTo make tofu steaks, you need to use a firm tofu that is hard enough to be handled like steak. It must be able to be sliced, coated in sesame seeds and pan fried. It is sold labelled either as “firm tofu” or “hard tofu”.\nIf the labels confuse you, it’s easy to tell just by picking up the packet. If it feels firm enough to slice without worrying about the tofu crumbling, it will work just fine for this recipe.\nHere is one brand of hard tofu that I use. This is from Harris Farms (Sydney):\n•\t Firm tofu used for Tofu Steaks\n•\t Notice how it’s firm enough to slice into “steaks”\nWhat else you need to make Sesame-Crusted Tofu Steak\nIn addition to the tofu, here’s all you need to make this wickedly delicious tofu recipe:\n \n•\tHard tofu or firm tofu – As described in the above section. Find it at everyday grocery stores or Asian stores.\n•\tSesame seeds – For the crispy coating. I use a combination of white and black seeds for visual interest. You can use just one or the other, if you prefer.\nYou will need 8 tablespoons of sesame seeds to coat 4 x 100g / 3.5oz steaks. This will seem like a lot, but trust me, you will use it all. We’re talking a big hit of sesame flavour here – and you’ll love it!\n•\tEgg and flour – To stick the sesame seeds to the tofu. Egg is the ultimate food glue!\nFOR THE TERIYAKI SAUCE\n•\tSoy sauce – I use Kikkoman for all my Japanese cooking. It’s the most well-known Japanese soy brand and an excellent all rounder. Japanese soy is slightly sweeter and more mild in flavour than Chinese light soy sauce, but the latter will do in a pinch. Otherwise use any other general-purpose soy sauce.\nDO NOT use anything labelled “dark soy sauce” or “sweet soy sauce” (it will ruin teriyaki sauce!).\n•\tMirin – Syrupy and golden coloured, mirin is a heavily sweetened type of rice wine with a deep flavour. It features frequently in Japanese food, introducing sweetness to dishes and when reduced gives glazes like teriyaki their sheen. Good brands include Takara, Manjo and Hinode.\nAvoid very cheap mirin that is not made in Japan which is usually an imitation product (such as Obento brand widely available here in Australia).\n•\tCooking sake – Rice wine is used liberally in Japanese cooking to add umami and depth. Don’t bother wasting that boutique drinking sake you lugged all the way back from Japan for cooking, though! Cooking sake is much cheaper and perfectly acceptable for use, and these days widely available even at grocery stores.\nGARNISHES\n•\tGarlic – Finely sliced then fried in a little oil until crispy and golden, this is for a little tasty garnish on the tofu steaks.\nBonus: It flavours the oil we use to pan fry the sesame steaks.\nShortcut: Use store bought crispy fried shallots. Regular readers know my pantry is never without!\n•\tGreen onion – To add a little sprinkle of colour to an otherwise rather monochromatic dish!  \n________________________________________\nHow to make Sesame-Crusted Tofu Steaks\nHere’s how to make tofu steaks that might just make you shout for the first time ever, “I TOTALLY LOVE TOFU!”\n \n1.\tSlice tofu (see photo further up) – Slice tofu into “steaks” about 1.5cm / 0.6″ thick. Blocks come in different sizes but don’t get hung up on the proportions of your tofu. The thickness is more important.\nCoat in sesame seeds – Coat tofu in flour first, ensuring the entire surface is covered. Shake off excess flour, then dip into beaten egg. As you remove it from the egg, let the excess drip off before placing into a bowl with the sesame seeds.\nPress to adhere then either cover the surface with sesame seeds (spoon it over or use fingers), or turn and press. Repeat with remaining tofu steaks.\n2.\tGolden garlic – Cook the garlic slices in a little oil until golden and crispy. Don’t let it get too brown else it will become bitter. Thin garlic slices burn in a flash so we’re using a medium-low heat here, to be safe.\n3.\tRemove garlic to paper towels to drain. Leave the tasty garlic-flavoured oil in the skillet for the tofu.\n \n4.\tPan-fry tofu – Crank up the heat to medium-high, then add tofu steaks. Cook the first side until you can see the white sesame seeds turn golden and crispy which takes around 1 1/2 minutes. You’ll also smell the sesame flavour and when you go to turn it, you will feel that the sesame crust has adhered well to the tofu surface.\nThe crust might be set, but this is not a licence to man-handle the tofu! So turn with care.\n5.\tSear edges – Cook the other side for about 90 seconds too, until crispy. Then use tongs to stand the tofu steaks up on their edge to make the sides crispy. You only need about 30 seconds on each of the edges.\nRemove the tofu steaks straight onto serving plates or one serving platter as I do. Now we’re going to make the Teriyaki sauce in the same skillet.\n \n6.\tOptional – discard loose sesame seeds: If you are taking photos of your dinner (oh wait, is that just me?  ), you can opt to strain the oil to remove loose sesame seeds before returning the oil into the skillet. This way, your Teriyaki Sauce will be debris-free. But this is entirely optional! I do not do this on Monday nights. I only did this so you know how to make this dish “neatly”.  \n7.\tReturn oil into skillet. This tasty garlic-and-sesame flavour oil will add flavour to our Teriyaki sauce.\n________________________________________\nMaking the Teriyaki Sauce\nHere’s how the Teriyaki Sauce is made:\n \n1.\tMix and simmer – Mix the mirin, cooking sake, soy sauce and a bit of water into a jug. Don’t be tempted to shortcut this by pouring each sauce individually into the skillet. When a small quantity of sweet liquids hit a hot skillet, it will evaporate in seconds and caramelise or worse, burn! We need a minimum volume of liquid to ensure this does not happen. So mix the Teriyaki sauce ingredients in a jug first then pour it into the skillet.\n2.\tSyrupy – Simmer for about 1 minute until it changes from watery to syrupy. We’re after a thin syrup here because (a) it will thicken as it cools from hot to warm (ie. from skillet to plating up to in your mouth); and (b) if it’s too thick, the flavour is too strong and will overwhelm the dish.\nThen immediately pour the Teriyaki Sauce over the Sesame Crusted Tofu Steaks. Sprinkle with crispy garlic bits and green onion, then serve!\n \nMmm, that Teriyaki Sauce-soaked sesame crust …\nThe sesame crust stays crispy for quite a long time even once doused with the sauce. Far longer than it will take for you to serve and eat it.\nAlso, another great feature of this dish is that the Teriyaki Sauce really clings to that sesame crust, far more than you’d expect. You’ll experience the greatness of what this means when you take your first bite and you get a fabulous squirt of Teriyaki Sauce in your mouth when you bite into the sesame crust!\n•\t \nWhat to serve with Sesame-Crusted Tofu\nPlain rice – There’s enough flavour and residual sauce here that it can be served with any plain rice side. ",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "category-1",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "ee7ed8f9-4279-4ff2-98ce-847980208235",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MzYyNjc5OCwiZXhwIjoxNjYzNjMzOTk4LCJpc3MiOiJzaG9wZXJzIn0.EOEKa2R2Fo3_FuljYdtiwDHT5FRCIub373kOAODjE3g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "qwertyu2",
+											"type": "text"
+										},
+										{
+											"key": "photo_id",
+											"type": "file",
+											"src": "/C:/Users/PC/Downloads/New folder (2)/kaos/5.jpg"
+										},
+										{
+											"key": "description",
+											"value": "qwertyu2",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "category-1",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "5890eb2c-716b-41cc-a2ad-bf8e7e8eedc9",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://worldrecipes-be.vercel.app/api/v1/recipes/21fc0303-f78d-40ed-8b37-d53bacbd4436",
+									"protocol": "https",
+									"host": [
+										"worldrecipes-be",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"v1",
+										"recipes",
+										"21fc0303-f78d-40ed-8b37-d53bacbd4436"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MzYyNjc5OCwiZXhwIjoxNjYzNjMzOTk4LCJpc3MiOiJzaG9wZXJzIn0.EOEKa2R2Fo3_FuljYdtiwDHT5FRCIub373kOAODjE3g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/recipes/7e5ce7c1-a3fb-4254-8e79-19a3f371f222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"recipes",
+										"7e5ce7c1-a3fb-4254-8e79-19a3f371f222"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete recipes selected",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbGxlcnRlc3RAc2VsbGVyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwNzg3ODcsImV4cCI6MTY2MTA4NTk4NywiaXNzIjoic2hvcGVycyJ9.62KGpOEJy3Lgi9ftrbT7Q1n2y9chhuVP9lw9-k6bzjE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8011/api/v1/product/selected/'d53f466b-9e7a-42c9-8e96-f4797fca4713'",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8011",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"selected",
+										"'d53f466b-9e7a-42c9-8e96-f4797fca4713'"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SavedRecipes",
+					"item": [
+						{
+							"name": "all savedrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Mzk0NjY5MiwiZXhwIjoxNjYzOTUzODkyLCJpc3MiOiJzaG9wZXJzIn0.eR1SZo-HKI50kk6wdh7hxvLULPH0hEOTvre5NFkhzpw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all savedrecipes pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes?sortby=created_on&sort=desc&page=1&limit=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all savedrecipes pagination by User Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes/ByUser/ef052ec2-2d32-4c79-a0d4-a5ed0ed11999?sortby=created_on&sort=desc&page=1&limit=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes",
+										"ByUser",
+										"ef052ec2-2d32-4c79-a0d4-a5ed0ed11999"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all savedrecipes pagination by User by Id Recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes/ByUserByIdRecipes?recipes_id=ddd57d32-ea9a-47e7-9214-2fb14f967a54&users_id=ef052ec2-2d32-4c79-a0d4-a5ed0ed11999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes",
+										"ByUserByIdRecipes"
+									],
+									"query": [
+										{
+											"key": "recipes_id",
+											"value": "ddd57d32-ea9a-47e7-9214-2fb14f967a54"
+										},
+										{
+											"key": "users_id",
+											"value": "ef052ec2-2d32-4c79-a0d4-a5ed0ed11999"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all savedrecipes search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwODYwMjksImV4cCI6MTY2MTA5MzIyOSwiaXNzIjoic2hvcGVycyJ9.jyMWN7K1yzciTxRkmWBe8yOyY0hF9Q-SJ1YFkE_p9qM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes?search=test",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all savedrecipes search pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwODYwMjksImV4cCI6MTY2MTA5MzIyOSwiaXNzIjoic2hvcGVycyJ9.jyMWN7K1yzciTxRkmWBe8yOyY0hF9Q-SJ1YFkE_p9qM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes?search=test&sortby=created_on&sort=asc&page=1&limit=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test"
+										},
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show savedrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes/099b4b76-b7f6-4f89-b9ef-c40234e53753",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes",
+										"099b4b76-b7f6-4f89-b9ef-c40234e53753"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create savedrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NDQ0Mzk5MSwiZXhwIjoxNjY0NDUxMTkxLCJpc3MiOiJzaG9wZXJzIn0.XJh5a9EnUMvu14ZJEFJopV3ZIh8rllX8zzVLrz30_TE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "recipes_id",
+											"value": "c15676ea-e7ed-4b4d-9197-5f090ff0dfb0",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "ef052ec2-2d32-4c79-a0d4-a5ed0ed11999",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update savedrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Mzk4MjA0NSwiZXhwIjoxNjYzOTg5MjQ1LCJpc3MiOiJzaG9wZXJzIn0.7ns-gy0odMD7NAnBHT4tP2viq9SxFLWqdv7mGFW1ZCQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "recipes_id",
+											"value": "c15676ea-e7ed-4b4d-9197-5f090ff0dfb0",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "ee7ed8f9-4279-4ff2-98ce-847980208235",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes/099b4b76-b7f6-4f89-b9ef-c40234e53753",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes",
+										"099b4b76-b7f6-4f89-b9ef-c40234e53753"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete savedrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtZXJpY2FuX2xhdGluQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY0NDY3OTE4LCJleHAiOjE2NjQ0NzUxMTgsImlzcyI6InNob3BlcnMifQ.Zql7LhiqkdIZ60csE-IeWxbM-PAMetrCHdwN9QTLF_c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/savedrecipes/e4250282-6e09-4864-8469-d4094c0c2e5d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"savedrecipes",
+										"e4250282-6e09-4864-8469-d4094c0c2e5d"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "LikesRecipes",
+					"item": [
+						{
+							"name": "all likesrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Mzk0NjY5MiwiZXhwIjoxNjYzOTUzODkyLCJpc3MiOiJzaG9wZXJzIn0.eR1SZo-HKI50kk6wdh7hxvLULPH0hEOTvre5NFkhzpw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all likesrecipes pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes?sortby=created_on&sort=desc&page=1&limit=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all likesrecipes pagination by User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes/ByUser/ef052ec2-2d32-4c79-a0d4-a5ed0ed11999?sortby=created_on&sort=desc&page=1&limit=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes",
+										"ByUser",
+										"ef052ec2-2d32-4c79-a0d4-a5ed0ed11999"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all likesrecipes pagination by User by Id Recipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes/ByUserByIdRecipes?recipes_id=ddd57d32-ea9a-47e7-9214-2fb14f967a54&users_id=ef052ec2-2d32-4c79-a0d4-a5ed0ed11999&sort=desc&page=1&limit=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes",
+										"ByUserByIdRecipes"
+									],
+									"query": [
+										{
+											"key": "recipes_id",
+											"value": "ddd57d32-ea9a-47e7-9214-2fb14f967a54"
+										},
+										{
+											"key": "users_id",
+											"value": "ef052ec2-2d32-4c79-a0d4-a5ed0ed11999"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all likesrecipes search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwODYwMjksImV4cCI6MTY2MTA5MzIyOSwiaXNzIjoic2hvcGVycyJ9.jyMWN7K1yzciTxRkmWBe8yOyY0hF9Q-SJ1YFkE_p9qM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes?search=test",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all likesrecipes search pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwODYwMjksImV4cCI6MTY2MTA5MzIyOSwiaXNzIjoic2hvcGVycyJ9.jyMWN7K1yzciTxRkmWBe8yOyY0hF9Q-SJ1YFkE_p9qM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes?search=test&sortby=created_on&sort=asc&page=1&limit=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test"
+										},
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show likesrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes/099b4b76-b7f6-4f89-b9ef-c40234e53753",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes",
+										"099b4b76-b7f6-4f89-b9ef-c40234e53753"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create likesrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtZXJpY2FuX2xhdGluQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY0NDYyMjEwLCJleHAiOjE2NjQ0Njk0MTAsImlzcyI6InNob3BlcnMifQ.Kn_d6RsKa-U6fhkyDrQOSL5VutQFrrhzG9s6S41wHTk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "recipes_id",
+											"value": "ddd57d32-ea9a-47e7-9214-2fb14f967a54",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "ef052ec2-2d32-4c79-a0d4-a5ed0ed11999",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update likesrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Mzk4MjA0NSwiZXhwIjoxNjYzOTg5MjQ1LCJpc3MiOiJzaG9wZXJzIn0.7ns-gy0odMD7NAnBHT4tP2viq9SxFLWqdv7mGFW1ZCQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "recipes_id",
+											"value": "c15676ea-e7ed-4b4d-9197-5f090ff0dfb0",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "ee7ed8f9-4279-4ff2-98ce-847980208235",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes/a0a0d08b-69f4-442c-bf62-d0129842a1e8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes",
+										"a0a0d08b-69f4-442c-bf62-d0129842a1e8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete likesrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtZXJpY2FuX2xhdGluQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY0NDYyMjEwLCJleHAiOjE2NjQ0Njk0MTAsImlzcyI6InNob3BlcnMifQ.Kn_d6RsKa-U6fhkyDrQOSL5VutQFrrhzG9s6S41wHTk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/likesrecipes/5ae39fb1-ff25-4061-93ae-c88f88cb6675",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"likesrecipes",
+										"5ae39fb1-ff25-4061-93ae-c88f88cb6675"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CommentRecipes",
+					"item": [
+						{
+							"name": "all commentrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Mzk0NjY5MiwiZXhwIjoxNjYzOTUzODkyLCJpc3MiOiJzaG9wZXJzIn0.eR1SZo-HKI50kk6wdh7hxvLULPH0hEOTvre5NFkhzpw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all commentrecipes pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes?sortby=created_on&sort=desc&page=1&limit=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes"
+									],
+									"query": [
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "desc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all commentrecipes by recipes Id pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes/byRecipes/ddd57d32-ea9a-47e7-9214-2fb14f967a54",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes",
+										"byRecipes",
+										"ddd57d32-ea9a-47e7-9214-2fb14f967a54"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all commentrecipes search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwODYwMjksImV4cCI6MTY2MTA5MzIyOSwiaXNzIjoic2hvcGVycyJ9.jyMWN7K1yzciTxRkmWBe8yOyY0hF9Q-SJ1YFkE_p9qM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes?search=test",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all commentrecipes search pagination",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjEwODYwMjksImV4cCI6MTY2MTA5MzIyOSwiaXNzIjoic2hvcGVycyJ9.jyMWN7K1yzciTxRkmWBe8yOyY0hF9Q-SJ1YFkE_p9qM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes?search=test&sortby=created_on&sort=asc&page=1&limit=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "test"
+										},
+										{
+											"key": "sortby",
+											"value": "created_on"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show commentrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJ0ZXN0MkB1c2VyLmNvbSIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE2NjExMTU2MDcsImV4cCI6MTY2MTEyMjgwNywiaXNzIjoic2hvcGVycyJ9.b5hBzm9dioUu8r-voVn1bf1Cy9384DNQfxiTkqSE89E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes/099b4b76-b7f6-4f89-b9ef-c40234e53753",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes",
+										"099b4b76-b7f6-4f89-b9ef-c40234e53753"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create commentrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtZXJpY2FuX2xhdGluQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY0NDUwMTUwLCJleHAiOjE2NjQ0NTczNTAsImlzcyI6InNob3BlcnMifQ.A3h8pgRU7cjxdHkHlKY0jlnqEJ0HadRlYk4xH_mGk7E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "recipes_id",
+											"value": "ddd57d32-ea9a-47e7-9214-2fb14f967a54",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "ee7ed8f9-4279-4ff2-98ce-847980208235",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "good recipes\nnews\nvaluable",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update commentrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Mzk4MjA0NSwiZXhwIjoxNjYzOTg5MjQ1LCJpc3MiOiJzaG9wZXJzIn0.7ns-gy0odMD7NAnBHT4tP2viq9SxFLWqdv7mGFW1ZCQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "recipes_id",
+											"value": "c15676ea-e7ed-4b4d-9197-5f090ff0dfb0",
+											"type": "text"
+										},
+										{
+											"key": "users_id",
+											"value": "ee7ed8f9-4279-4ff2-98ce-847980208235",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes/f609ecd9-7259-4f30-a074-57a8e925dd1b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes",
+										"f609ecd9-7259-4f30-a074-57a8e925dd1b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete commentrecipes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzaWFucmVjaXBlc0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Mzk4MjA0NSwiZXhwIjoxNjYzOTg5MjQ1LCJpc3MiOiJzaG9wZXJzIn0.7ns-gy0odMD7NAnBHT4tP2viq9SxFLWqdv7mGFW1ZCQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5005/api/v1/commentrecipes/f609ecd9-7259-4f30-a074-57a8e925dd1b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5005",
+									"path": [
+										"api",
+										"v1",
+										"commentrecipes",
+										"f609ecd9-7259-4f30-a074-57a8e925dd1b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deploy",
+			"item": []
+		}
+	]
+}
