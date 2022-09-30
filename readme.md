@@ -1,5 +1,3 @@
-World Recipes
-
 ## Requirements Node.js
 
 Node.js is an open-source, cross-platform, JavaScript runtime environment.
@@ -28,17 +26,6 @@ installing Node.js on here : https://nodejs.org/en/download/
 
 installing PostgreSQL on here : https://www.postgresql.org/download/
 
-installing Redis on here :
-
-Mac OS : https://developer.redis.com/create/homebrew/
-
-Winsdows OS : https://developer.redis.com/create/windows/
-
-Linux OS :
-
-```shell
- sudo apt install redis-server
-```
 
 Next to Terminal Visual Studio code
 
@@ -135,11 +122,11 @@ import [Multer]
 npm i multer;
 ```
 
-import [Node-Redis]
-
+import [googleapis]
 ```shell
-npm i redis;
+npm i googleapis;
 ```
+
 
 [express]: http://expressjs.com
 [nodemon]: https://www.npmjs.com/package/nodemon
@@ -164,6 +151,7 @@ npm i redis;
 [helmet]: https://www.npmjs.com/package/helmet
 [xss-clean]: https://www.npmjs.com/package/xss-clean#use
 [node-postgres]: https://www.npmjs.com/package/pg
+[googleapis]: https://www.npmjs.com/package/googleapis
 
 ## Testing
 
