@@ -63,7 +63,7 @@ const savedRecipesController = {
             const { recipes_id, users_id } = req.body;
             // console.log(req.body.i);
 
-            const id = users_id
+            const id = recipes_id
 
             const checkSavedRecipes = await savedRecipesModel.selectSavedRecipes(id);
 
